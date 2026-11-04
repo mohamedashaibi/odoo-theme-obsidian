@@ -1,0 +1,57 @@
+# Arabic translation for web_theme_obsidian
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Language: ar\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+
+#. module: web_theme_obsidian
+#. odoo-javascript
+#: code:addons/web_theme_obsidian/static/src/color_scheme/color_scheme_toggle.js:0
+msgid "Switch to dark mode"
+msgstr "التبديل إلى الوضع الداكن"
+
+#. module: web_theme_obsidian
+#. odoo-javascript
+#: code:addons/web_theme_obsidian/static/src/color_scheme/color_scheme_toggle.js:0
+msgid "Switch to light mode"
+msgstr "التبديل إلى الوضع الفاتح"
+
+#. module: web_theme_obsidian
+#. odoo-javascript
+#: code:addons/web_theme_obsidian/static/src/loading/block_ui_patch.js:0
+msgid "Loading…"
+msgstr "جارٍ التحميل…"
+
+#. module: web_theme_obsidian
+#. odoo-javascript
+#: code:addons/web_theme_obsidian/static/src/loading/block_ui_patch.js:0
+msgid "Still working on it…"
+msgstr "ما زلنا نعمل على ذلك…"
+
+#. module: web_theme_obsidian
+#. odoo-javascript
+#: code:addons/web_theme_obsidian/static/src/loading/block_ui_patch.js:0
+msgid "This is taking longer than usual."
+msgstr "يستغرق هذا وقتًا أطول من المعتاد."
+
+#. module: web_theme_obsidian
+#. odoo-javascript
+#: code:addons/web_theme_obsidian/static/src/loading/block_ui_patch.js:0
+msgid "Hang tight, it's still running."
+msgstr "انتظر قليلًا، العملية لا تزال جارية."
+
+#. module: web_theme_obsidian
+#. odoo-javascript
+#: code:addons/web_theme_obsidian/static/src/loading/block_ui_patch.js:0
+msgid "Still running in the background."
+msgstr "العملية لا تزال جارية في الخلفية."
+
+#. module: web_theme_obsidian
+#. odoo-javascript
+#: code:addons/web_theme_obsidian/static/src/loading/block_ui_patch.js:0
+msgid "If nothing changes, try reloading the page (F5)."
+msgstr "إذا لم يتغير شيء، جرّب إعادة تحميل الصفحة (F5)."

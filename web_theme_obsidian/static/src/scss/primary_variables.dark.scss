@@ -1,0 +1,50 @@
+// Obsidian dark palette — inserted (dark bundle only) right before
+// web/static/src/scss/primary_variables.scss, after the light theme file,
+// so these plain assignments win. Odoo's dark technique: flip white/black
+// and the gray ramp; everything derived from them follows.
+
+$o-webclient-color-scheme: dark;
+
+$o-white: #0b0a1a;
+$o-black: #ffffff;
+
+// Indigo-tinted ramp, dark → light
+$o-gray-100: #0e0d20;   // canvas
+$o-gray-200: #15142c;   // views, cards
+$o-gray-300: #24223f;   // borders
+$o-gray-400: #3a3760;
+$o-gray-500: #5c5885;
+$o-gray-600: #8884ab;
+$o-gray-700: #aeabcb;
+$o-gray-800: #cdcae3;
+$o-gray-900: #e9e7f7;   // main text: 14.9:1 on views
+
+$o-view-background-color: #15142c;
+$o-webclient-background-color: #0e0d20;
+$o-shadow-color: #050410;
+$o-list-group-active-bg: #24223f;
+
+// Brand: brighter violet that still carries white text (5.1:1)
+$o-community-color: #6a4dff;
+$o-enterprise-color: #6a4dff;
+$o-enterprise-action-color: #6a4dff;
+$o-brand-odoo: #6a4dff;
+$o-brand-primary: #6a4dff;
+$o-action: #6a4dff;
+$o-main-link-color: #a99bff;   // 7.2:1 on views
+
+// $o-white is now dark, so pin primary-button text to real white.
+// Odoo merges its defaults *under* this map, so these entries win.
+$o-btns-bs-override: (
+    "primary": (
+        background: #6a4dff,
+        border: #6a4dff,
+        color: #ffffff,
+        hover-background: #7a60ff,
+        hover-border: #7a60ff,
+        hover-color: #ffffff,
+        active-background: #8670ff,
+        active-border: #8670ff,
+        active-color: #ffffff,
+    ),
+);

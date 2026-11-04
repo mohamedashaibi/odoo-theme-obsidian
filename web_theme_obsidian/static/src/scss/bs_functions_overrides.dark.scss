@@ -1,0 +1,11 @@
+// Dark bundle only — after Bootstrap's _functions.scss.
+// "Subtle" backgrounds (alerts, badges) are made by tinting toward white;
+// in dark mode they must tint toward the night instead, and vice versa.
+
+@function tint-color($color, $weight) {
+    @return mix(#0e0d20, $color, $weight);
+}
+
+@function shade-color($color, $weight) {
+    @return mix(#ffffff, $color, $weight);
+}

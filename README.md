@@ -3,7 +3,8 @@
 A modern skin for the Odoo 19 backend: night-indigo aurora navbar, an indigo→violet gradient accent, Tajawal typography (Arabic + Latin), roomy spacing, floating form sheets and list cards, lifting kanban cards, and a glowing dark login screen.
 
 - Built on Odoo 19's own SCSS variables (navbar, buttons, fonts, statusbar) — minimal overrides
-- Dark colour scheme support (`web.assets_web_dark`)
+- **Dark mode toggle** in the navbar (sun/moon). Ships its own dark palette, so it works on Community; remembered per browser
+- **Modern loaders**: Odoo's corner "Loading" box becomes a glowing top progress bar; the full-screen wait gets frosted glass, a gradient ring and calm messages (Arabic included)
 - Arabic / RTL friendly: Tajawal for both scripts, no letter-spacing on cursive text
 - Visible keyboard focus, respects `prefers-reduced-motion`
 

@@ -611,6 +611,138 @@
 }
 
 // ---------------------------------------------------------------------
+// Colour-scheme toggle (systray)
+// ---------------------------------------------------------------------
+.o_web_client .o_main_navbar .o_ob_scheme_btn {
+    cursor: pointer;
+
+    .o_ob_scheme_icon {
+        transition: transform 0.45s var(--ob-snap);
+    }
+
+    &:hover .o_ob_scheme_icon {
+        transform: rotate(-24deg) scale(1.08);
+    }
+
+    &.is-dark:hover .o_ob_scheme_icon {
+        transform: rotate(45deg) scale(1.08);
+    }
+}
+
+// Fade the page to the next scheme's canvas before reloading
+body.o_ob_scheme_switching::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: #0e0d20;   // fading toward dark
+    animation: ob-fade-in 0.2s var(--ob-enter) both;
+}
+
+@keyframes ob-fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+// ---------------------------------------------------------------------
+// Loading — Odoo's corner "Loading" box becomes a glowing top bar
+// (web/static/src/webclient/loading_indicator). Text stays in the DOM
+// for screen readers, it just isn't painted.
+// ---------------------------------------------------------------------
+.o_web_client .o_loading_indicator {
+    top: 0;
+    right: 0;
+    bottom: auto;
+    left: 0;
+    height: 3px;
+    padding: 0;
+    overflow: hidden;
+    background: var(--ob-accent-soft);
+    color: transparent;
+    font-size: 0;
+    pointer-events: none;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset-block: 0;
+        left: 0;
+        width: 45%;
+        border-radius: 3px;
+        background: linear-gradient(90deg, transparent 0%, var(--ob-accent) 35%, var(--ob-accent-2) 70%, #c4b5fd 100%);
+        box-shadow: 0 0 14px 1px rgba(139, 61, 255, 0.75);
+        animation: ob-loading-bar 1.15s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+    }
+}
+
+// While anything is loading, the cursor says so too
+body.o_web_client:has(.o_loading_indicator:not(.o-fade-leave)) {
+    cursor: progress;
+}
+
+@keyframes ob-loading-bar {
+    from { transform: translateX(-100%); }
+    to   { transform: translateX(240%); }
+}
+
+// ---------------------------------------------------------------------
+// Full-screen wait (web/static/src/core/ui/block_ui): frosted night
+// glass, a gradient ring instead of the old spinner GIF, calm copy.
+// ---------------------------------------------------------------------
+.o_web_client .o_blockUI:not(.o_blockUI_invisible) {
+    background: rgba(14, 13, 32, 0.55);
+    -webkit-backdrop-filter: blur(8px) saturate(1.2);
+    backdrop-filter: blur(8px) saturate(1.2);
+    animation: ob-fade-in 0.3s var(--ob-enter) both;
+
+    .o_spinner {
+        position: relative;
+        width: 58px;
+        height: 58px;
+        margin-bottom: 1.75rem !important;
+
+        img {
+            display: none;
+        }
+
+        // Gradient ring
+        &::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, transparent 0deg, rgba(139, 61, 255, 0.15) 60deg, #5b3df5 200deg, #8b3dff 300deg, #c4b5fd 360deg);
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 4px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 5px), #000 calc(100% - 4px));
+            animation: ob-spin 0.95s cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
+        }
+
+        // Soft halo behind it
+        &::after {
+            content: "";
+            position: absolute;
+            inset: -14px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139, 61, 255, 0.35), transparent 70%);
+            z-index: -1;
+        }
+    }
+
+    .o_message {
+        max-width: 26rem;
+        color: #fff;
+        font-size: 1.0625rem;
+        font-weight: 700;
+        line-height: 1.6;
+        text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+    }
+}
+
+@keyframes ob-spin {
+    to { transform: rotate(360deg); }
+}
+
+// ---------------------------------------------------------------------
 // Arabic / RTL: tracking breaks cursive joins; uppercase is meaningless.
 // ---------------------------------------------------------------------
 html[dir="rtl"] .o_web_client,
@@ -641,5 +773,11 @@ html[lang^="ar"] .o_web_client,
 
     .o_web_client .o_kanban_record:hover {
         transform: none !important;
+    }
+
+    // Loaders must still show activity: slow them down instead of freezing
+    .o_web_client .o_loading_indicator::before,
+    .o_web_client .o_blockUI .o_spinner::before {
+        animation-duration: 2.4s !important;
     }
 }

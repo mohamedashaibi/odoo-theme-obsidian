@@ -1,0 +1,16 @@
+// Dark bundle only — before web/static/src/scss/bootstrap_overridden.scss.
+// Bootstrap builds shadows/floating surfaces from $black/$white, which are
+// flipped in dark mode; pin them so shadows stay dark and layers stay indigo.
+
+$box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.5);
+$box-shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.4);
+$box-shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.6);
+$box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+
+$dropdown-bg: #1a1934;
+$popover-bg: #1a1934;
+$tooltip-bg: #e9e7f7;
+$tooltip-color: #0e0d20;
+$modal-backdrop-bg: #000000;
+$nav-tabs-link-active-bg: transparent;
+$input-focus-box-shadow: 0;

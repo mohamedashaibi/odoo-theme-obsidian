@@ -1,25 +1,28 @@
-// Obsidian — dark colour scheme. Loaded only in web.assets_web_dark,
-// after backend.scss, so these tokens replace the light ones.
+// Obsidian — dark colour scheme tokens. Loaded only in web.assets_web_dark,
+// after backend.scss, so these replace the light ones. Surfaces match the
+// gray ramp in primary_variables.dark.scss.
 
 :root {
-    --ob-accent: #8f7bff;
-    --ob-accent-2: #b07bff;
-    --ob-accent-hover: #a594ff;
+    --ob-accent: #6a4dff;
+    --ob-accent-2: #9b5cff;
+    --ob-accent-hover: #7a60ff;
     --ob-accent-ink: #b3a6ff;
     --ob-accent-soft: rgba(143, 123, 255, 0.18);
     --ob-accent-tint: rgba(143, 123, 255, 0.07);
-    --ob-accent-ring: rgba(143, 123, 255, 0.35);
+    --ob-accent-ring: rgba(143, 123, 255, 0.38);
+    --ob-gradient: linear-gradient(135deg, #6a4dff 0%, #9b5cff 100%);
+    --ob-gradient-hover: linear-gradient(135deg, #7a60ff 0%, #a86dff 100%);
 
     --ob-night: #08071a;
     --ob-night-gradient: linear-gradient(100deg, #07061a 0%, #0f0b2e 55%, #1c0f48 100%);
 
-    --ob-bg: #0c0b1d;
+    --ob-bg: #0e0d20;
     --ob-glow: radial-gradient(1100px 420px at 85% -160px, rgba(139, 61, 255, 0.16), transparent 70%);
-    --ob-surface: #14132b;
-    --ob-surface-2: #110f26;
+    --ob-surface: #15142c;
+    --ob-surface-2: #12112a;
     --ob-heading: #f3f1ff;
-    --ob-text: #d8d5ef;
-    --ob-muted: #9d99bf;
+    --ob-text: #e9e7f7;
+    --ob-muted: #a19dc4;     // 7.3:1 on surface
     --ob-line: #24223f;
     --ob-line-strong: #322f55;
     --ob-line-hover: #47436f;
@@ -28,4 +31,8 @@
     --ob-shadow-lift: 0 18px 36px -14px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(143, 123, 255, 0.15);
     --ob-shadow-sheet: 0 30px 60px -32px rgba(0, 0, 0, 0.7);
     --ob-shadow-btn: 0 8px 22px -8px rgba(139, 61, 255, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+body.o_ob_scheme_switching::after {
+    background: #f6f5fc;   // fading toward light
 }
