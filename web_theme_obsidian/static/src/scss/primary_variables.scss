@@ -1,0 +1,36 @@
+// Prepended to web._assets_primary_variables (Odoo 19). Plain assignments
+// (no !default) so Odoo's own `!default` declarations yield to these.
+// Only brand + navbar + fonts: surface/text colours stay Odoo-derived so
+// the dark colour scheme keeps working.
+
+// Brand — drives $o-btns-bs-override, links, focus, badges, statusbar
+$o-community-color: #6246ea;
+$o-enterprise-color: #6246ea;
+$o-enterprise-action-color: #6246ea;
+$o-brand-odoo: #6246ea;
+$o-brand-primary: #6246ea;
+$o-action: #6246ea;
+
+$o-success: #12a150;
+$o-info: #2f80ed;
+$o-warning: #e8a317;
+$o-danger: #e5484d;
+
+// Typography — wrapped by Odoo's o-add-unicode-support-font()
+$o-system-fonts: ("Plus Jakarta Sans", "IBM Plex Sans Arabic", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif);
+$o-headings-font-family: ("Bricolage Grotesque", "IBM Plex Sans Arabic", "Plus Jakarta Sans", -apple-system, "Segoe UI", sans-serif);
+
+// Navbar (web/static/src/webclient/navbar/navbar.variables.scss)
+// 6px vertical padding turns full-height entries into rounded pills.
+$o-navbar-background: #0b0e1a;
+$o-navbar-border-bottom: 1px solid #1b2033;
+$o-navbar-padding-v: 6px;
+$o-navbar-entry-margin-h: 1px;
+$o-navbar-entry-border-radius: 8px;
+$o-navbar-entry-color: rgba(255, 255, 255, 0.72);
+$o-navbar-entry-color--hover: #ffffff;
+$o-navbar-entry-bg--hover: rgba(255, 255, 255, 0.08);
+$o-navbar-brand-color: #ffffff;
+$o-navbar-badge-bg: #6246ea;
+$o-navbar-badge-color: #ffffff;
+$o-navbar-badge-text-shadow: none;

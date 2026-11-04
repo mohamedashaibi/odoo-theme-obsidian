@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Fonts for backend + login. System fonts take over if offline. -->
+    <template id="layout_fonts" inherit_id="web.layout" name="Obsidian Fonts">
+        <xpath expr="//head" position="inside">
+            <link rel="preconnect" href="https://fonts.googleapis.com"/>
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin=""/>
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Plus+Jakarta+Sans:wght@300;400;600;800&amp;family=IBM+Plex+Sans+Arabic:wght@400;600;700&amp;display=swap"/>
+        </xpath>
+    </template>
+</odoo>

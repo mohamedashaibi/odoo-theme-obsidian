@@ -1,0 +1,487 @@
+// =====================================================================
+// Obsidian — backend skin for Odoo 19
+// Colours, navbar, buttons and fonts come from primary_variables.scss;
+// this file adds shape, typography and motion on top of Odoo's markup.
+// Every colour is a token so backend.dark.scss can swap the palette.
+// =====================================================================
+
+:root {
+    --ob-ink: #0b0e1a;
+    --ob-accent: #6246ea;
+    --ob-accent-hover: #4f35d2;
+    --ob-accent-soft: #efecff;
+    --ob-accent-tint: #f8f7ff;
+    --ob-accent-ring: rgba(98, 70, 234, 0.28);
+    --ob-on-accent: #ffffff;
+
+    --ob-bg: #f5f6fa;
+    --ob-surface: #ffffff;
+    --ob-surface-2: #fafbfd;
+    --ob-heading: #0b0e1a;
+    --ob-text: #1a1f36;
+    --ob-muted: #5f6680;      // 5.6:1 on white
+    --ob-line: #e7e9f2;
+    --ob-line-strong: #d5d9e6;
+    --ob-line-hover: #b9bed2;
+
+    --ob-font-display: "Bricolage Grotesque", "IBM Plex Sans Arabic", "Plus Jakarta Sans", system-ui, sans-serif;
+
+    --ob-r-sm: 8px;
+    --ob-r: 12px;
+    --ob-r-lg: 18px;
+    --ob-shadow-pop: 0 18px 48px -12px rgba(11, 14, 26, 0.22), 0 2px 6px rgba(11, 14, 26, 0.06);
+    --ob-shadow-lift: 0 12px 28px -10px rgba(11, 14, 26, 0.18);
+    --ob-shadow-sheet: 0 1px 2px rgba(11, 14, 26, 0.04), 0 24px 48px -32px rgba(11, 14, 26, 0.18);
+
+    --ob-snap: cubic-bezier(0.16, 1, 0.3, 1);
+    --ob-enter: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+// ---------------------------------------------------------------------
+// Base
+// ---------------------------------------------------------------------
+.o_web_client {
+    letter-spacing: -0.003em;
+    background-color: var(--ob-bg);
+    -webkit-font-smoothing: antialiased;
+
+    ::selection {
+        background: var(--ob-accent-soft);
+        color: var(--ob-ink);
+    }
+
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--ob-line-strong) transparent;
+    }
+
+    // Keyboard focus is restyled, never removed
+    :focus-visible {
+        outline: 2px solid var(--ob-accent);
+        outline-offset: 2px;
+    }
+}
+
+// ---------------------------------------------------------------------
+// Navbar — colours via variables; just the brand wordmark here
+// ---------------------------------------------------------------------
+.o_web_client .o_main_navbar {
+    .o_menu_brand {
+        font-family: var(--ob-font-display);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+    }
+
+    .o_menu_sections .o_nav_entry,
+    .o_menu_sections .dropdown-toggle {
+        font-weight: 600;
+        transition: color 0.18s var(--ob-snap), background-color 0.18s var(--ob-snap);
+    }
+
+    .o_menu_systray .badge {
+        box-shadow: 0 0 0 2px var(--ob-ink);
+    }
+}
+
+// ---------------------------------------------------------------------
+// Floating layers: dropdowns, popovers, modals, notifications
+// ---------------------------------------------------------------------
+.o_web_client .dropdown-menu,
+.o_web_client .o-dropdown--menu,
+.o_web_client .popover {
+    border: 1px solid var(--ob-line);
+    border-radius: var(--ob-r);
+    box-shadow: var(--ob-shadow-pop);
+    padding: 6px;
+    animation: ob-pop 0.22s var(--ob-enter);
+
+    .dropdown-item {
+        border-radius: var(--ob-r-sm);
+        transition: background-color 0.15s var(--ob-snap), color 0.15s var(--ob-snap);
+
+        &:hover,
+        &:focus,
+        &.focus {
+            background: var(--ob-accent-soft);
+            color: var(--ob-heading);
+        }
+    }
+
+    .dropdown-header {
+        font-size: 0.6875rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ob-muted);
+    }
+}
+
+.o_web_client .modal-content {
+    border: 0;
+    border-radius: var(--ob-r-lg);
+    box-shadow: var(--ob-shadow-pop);
+    overflow: hidden;
+
+    .modal-header {
+        border-bottom-color: var(--ob-line);
+        padding: 1.25rem 1.5rem;
+    }
+
+    .modal-title {
+        font-family: var(--ob-font-display);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+    }
+
+    .modal-footer {
+        border-top-color: var(--ob-line);
+        background: var(--ob-surface-2);
+    }
+}
+
+.o_web_client .modal-backdrop.show {
+    background: var(--ob-ink);
+    opacity: 0.45;
+    backdrop-filter: blur(3px);
+}
+
+.o_web_client .o_notification {
+    border: 0;
+    border-radius: var(--ob-r);
+    box-shadow: var(--ob-shadow-pop);
+    overflow: hidden;
+    animation: ob-pop 0.26s var(--ob-enter);
+}
+
+@keyframes ob-pop {
+    from { opacity: 0; transform: translateY(-4px) scale(0.985); }
+    to   { opacity: 1; transform: none; }
+}
+
+// ---------------------------------------------------------------------
+// Control panel — the last breadcrumb becomes a headline
+// ---------------------------------------------------------------------
+.o_web_client .o_control_panel {
+    .o_breadcrumb {
+        .breadcrumb-item,
+        .breadcrumb-item a {
+            font-weight: 600;
+            color: var(--ob-muted);
+        }
+
+        .o_last_breadcrumb_item,
+        .o_last_breadcrumb_item span {
+            font-family: var(--ob-font-display);
+            font-size: 1.375rem;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.15;
+            color: var(--ob-heading);
+        }
+    }
+
+    .o_searchview {
+        border-radius: var(--ob-r);
+        transition: border-color 0.18s var(--ob-snap), box-shadow 0.18s var(--ob-snap);
+
+        &:focus-within {
+            border-color: var(--ob-accent) !important;
+            box-shadow: 0 0 0 4px var(--ob-accent-ring);
+        }
+    }
+
+    // Facets keep Odoo's per-type colours, just pill-shaped
+    .o_searchview_facet {
+        border-radius: 999px !important;
+        overflow: hidden;
+
+        .o_searchview_facet_label {
+            border-radius: 999px 0 0 999px !important;
+            padding-inline: 0.5rem !important;
+        }
+    }
+
+    .o_cp_switch_buttons .o_switch_view {
+        border-radius: var(--ob-r-sm);
+
+        &.active {
+            background: var(--ob-ink);
+            color: var(--ob-on-accent);
+        }
+    }
+}
+
+// ---------------------------------------------------------------------
+// Buttons — colours already from $o-brand-primary; add shape + depth
+// ---------------------------------------------------------------------
+.o_web_client .btn {
+    border-radius: var(--ob-r-sm);
+    font-weight: 600;
+    transition: background-color 0.18s var(--ob-snap), border-color 0.18s var(--ob-snap),
+        color 0.18s var(--ob-snap), box-shadow 0.18s var(--ob-snap), transform 0.18s var(--ob-snap);
+
+    &:active:not(.o_arrow_button) {
+        transform: translateY(1px);
+    }
+}
+
+.o_web_client .btn-primary {
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 6px 16px -6px rgba(98, 70, 234, 0.6);
+
+    &:focus-visible {
+        box-shadow: 0 0 0 4px var(--ob-accent-ring);
+    }
+}
+
+// ---------------------------------------------------------------------
+// Inputs, checkboxes, tags
+// ---------------------------------------------------------------------
+.o_web_client {
+    .o_input,
+    .form-control,
+    .form-select {
+        transition: border-color 0.18s var(--ob-snap), box-shadow 0.18s var(--ob-snap);
+
+        &:hover:not(:focus) {
+            border-color: var(--ob-line-hover);
+        }
+
+        &:focus {
+            border-color: var(--ob-accent);
+        }
+    }
+
+    .form-control,
+    .form-select {
+        border-radius: var(--ob-r-sm);
+
+        &:focus {
+            box-shadow: 0 0 0 4px var(--ob-accent-ring);
+        }
+    }
+
+    .o_tag,
+    .badge {
+        border-radius: 999px;
+        font-weight: 600;
+    }
+}
+
+// ---------------------------------------------------------------------
+// List view — quiet headers, crisp rows
+// ---------------------------------------------------------------------
+.o_web_client .o_list_renderer .o_list_table {
+    thead th {
+        color: var(--ob-muted);
+        font-size: 0.6875rem;
+        font-weight: 800;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        padding-top: 12px;
+        padding-bottom: 12px;
+    }
+
+    tbody tr.o_data_row {
+        transition: background-color 0.15s var(--ob-snap);
+
+        &:hover > td {
+            background-color: var(--ob-accent-tint);
+        }
+
+        &.o_data_row_selected > td {
+            background-color: var(--ob-accent-soft);
+        }
+    }
+
+    .o_group_header {
+        font-weight: 700;
+    }
+
+    tfoot td {
+        font-weight: 800;
+        color: var(--ob-heading);
+    }
+}
+
+// ---------------------------------------------------------------------
+// Kanban — cards that lift on hover
+// ---------------------------------------------------------------------
+.o_web_client .o_kanban_renderer {
+    .o_kanban_record:not(.o_kanban_ghost):not(.o_kanban_quick_create) {
+        border: 1px solid var(--ob-line);
+        border-radius: var(--ob-r);
+        transition: transform 0.25s var(--ob-snap), box-shadow 0.25s var(--ob-snap), border-color 0.25s var(--ob-snap);
+
+        &:hover,
+        &:focus-within {
+            transform: translateY(-2px);
+            border-color: var(--ob-line-strong);
+            box-shadow: var(--ob-shadow-lift);
+        }
+
+        // Odoo 19 card templates mark the title with fw-bold + fs-5
+        .fw-bold.fs-5,
+        .fw-bolder.fs-5 {
+            font-family: var(--ob-font-display);
+            letter-spacing: -0.015em;
+            color: var(--ob-heading);
+        }
+    }
+
+    .o_kanban_header_title .o_column_title {
+        font-family: var(--ob-font-display);
+        font-weight: 800;
+        letter-spacing: -0.015em;
+    }
+
+    .o_kanban_counter .progress {
+        border-radius: 999px;
+        overflow: hidden;
+    }
+}
+
+// ---------------------------------------------------------------------
+// Form view — the sheet floats on the canvas
+// ---------------------------------------------------------------------
+.o_web_client .o_form_view {
+    .o_form_sheet_bg {
+        background: var(--ob-bg);
+    }
+
+    .o_form_sheet {
+        border: 1px solid var(--ob-line);
+        border-radius: var(--ob-r-lg);
+        box-shadow: var(--ob-shadow-sheet);
+        animation: ob-rise 0.32s var(--ob-enter);
+    }
+
+    .oe_title h1,
+    .oe_title h1 input {
+        font-family: var(--ob-font-display);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        color: var(--ob-heading);
+    }
+
+    .o_horizontal_separator {
+        font-size: 0.6875rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--ob-muted);
+        border-bottom: 0;
+    }
+
+    .o_form_label {
+        font-weight: 600;
+    }
+
+    // Notebook: underline tabs, not boxes
+    .o_notebook .nav-tabs {
+        border-bottom-color: var(--ob-line);
+
+        .nav-link {
+            border: 0;
+            border-bottom: 2px solid transparent;
+            background: transparent;
+            color: var(--ob-muted);
+            font-weight: 600;
+            transition: color 0.18s var(--ob-snap), border-color 0.18s var(--ob-snap);
+
+            &:hover {
+                color: var(--ob-heading);
+            }
+
+            &.active {
+                color: var(--ob-heading);
+                border-bottom-color: var(--ob-accent);
+            }
+        }
+    }
+
+    .oe_button_box .oe_stat_button {
+        transition: background-color 0.18s var(--ob-snap);
+
+        &:hover {
+            background: var(--ob-accent-tint);
+        }
+
+        .o_stat_value {
+            font-family: var(--ob-font-display);
+            font-weight: 800;
+            color: var(--ob-heading);
+        }
+    }
+}
+
+// Statusbar — keeps Odoo 19's clip-path arrows, recoloured via its own vars
+.o_web_client .o_field_statusbar > .o_statusbar_status {
+    --o-statusbar-radius: var(--ob-r-sm);
+    --o-statusbar-background-active: var(--ob-accent-soft);
+    --o-statusbar-border-active: var(--ob-accent);
+
+    > .o_arrow_button {
+        font-weight: 600;
+
+        &.o_arrow_button_current {
+            color: var(--ob-accent-hover);
+            font-weight: 800;
+        }
+    }
+}
+
+@keyframes ob-rise {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: none; }
+}
+
+// ---------------------------------------------------------------------
+// Chatter
+// ---------------------------------------------------------------------
+.o_web_client .o-mail-Chatter {
+    .o-mail-Message-body {
+        line-height: 1.55;
+    }
+
+    .o-mail-Message-author {
+        font-weight: 800;
+        color: var(--ob-heading);
+    }
+}
+
+// ---------------------------------------------------------------------
+// Arabic / RTL: negative tracking breaks cursive joins — reset it.
+// ---------------------------------------------------------------------
+html[dir="rtl"] .o_web_client,
+html[lang^="ar"] .o_web_client,
+.o_web_client.o_rtl {
+    letter-spacing: normal;
+
+    * {
+        letter-spacing: normal !important;
+    }
+
+    .o_list_table thead th,
+    .o_horizontal_separator,
+    .dropdown-header {
+        text-transform: none;
+        font-size: 0.75rem;
+    }
+}
+
+// ---------------------------------------------------------------------
+// Reduced motion
+// ---------------------------------------------------------------------
+@media (prefers-reduced-motion: reduce) {
+    .o_web_client *,
+    .o_web_client *::before,
+    .o_web_client *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .o_web_client .o_kanban_record:hover {
+        transform: none !important;
+    }
+}

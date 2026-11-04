@@ -1,0 +1,30 @@
+// Obsidian — dark colour scheme. Loaded only in web.assets_web_dark,
+// after backend.scss, so these tokens replace the light ones.
+
+:root {
+    --ob-ink: #07090f;
+    --ob-accent: #8b74ff;
+    --ob-accent-hover: #a594ff;
+    --ob-accent-soft: rgba(139, 116, 255, 0.18);
+    --ob-accent-tint: rgba(139, 116, 255, 0.07);
+    --ob-accent-ring: rgba(139, 116, 255, 0.35);
+    --ob-on-accent: #ffffff;
+
+    --ob-bg: #0e1120;
+    --ob-surface: #151a2d;
+    --ob-surface-2: #12172a;
+    --ob-heading: #f4f5fb;
+    --ob-text: #d9dcea;
+    --ob-muted: #9aa1bd;
+    --ob-line: #232a42;
+    --ob-line-strong: #2f3756;
+    --ob-line-hover: #434c70;
+
+    --ob-shadow-pop: 0 18px 48px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    --ob-shadow-lift: 0 14px 30px -12px rgba(0, 0, 0, 0.7);
+    --ob-shadow-sheet: 0 24px 48px -28px rgba(0, 0, 0, 0.6);
+}
+
+.o_web_client ::selection {
+    color: var(--ob-heading);
+}
