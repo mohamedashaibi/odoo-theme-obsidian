@@ -41,6 +41,15 @@
     --ob-shadow-sheet: 0 1px 2px rgba(22, 18, 58, 0.04), 0 30px 60px -36px rgba(64, 40, 180, 0.22);
     --ob-shadow-btn: 0 8px 20px -8px rgba(91, 61, 245, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 
+    // Enterprise home screen (app grid)
+    --ob-home-image:
+        radial-gradient(900px 620px at 88% -8%, rgba(139, 61, 255, 0.2), transparent 62%),
+        radial-gradient(760px 560px at -6% 106%, rgba(59, 130, 246, 0.14), transparent 62%),
+        radial-gradient(640px 420px at 50% 45%, rgba(91, 61, 245, 0.06), transparent 70%);
+    --ob-home-caption-shadow: none;
+    --ob-app-shadow: inset 0 0 0 1px rgba(22, 18, 58, 0.06), 0 10px 24px -12px rgba(64, 40, 180, 0.35);
+    --ob-app-shadow-hover: inset 0 0 0 1px rgba(22, 18, 58, 0.06), 0 20px 36px -12px rgba(64, 40, 180, 0.45);
+
     --ob-snap: cubic-bezier(0.16, 1, 0.3, 1);
     --ob-enter: cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -108,6 +117,59 @@
 
     .o_menu_systray .badge {
         box-shadow: 0 0 0 2px var(--ob-night);
+    }
+}
+
+// ---------------------------------------------------------------------
+// Enterprise home screen (web_enterprise home_menu). No-op on Community.
+// Skipped when the company set its own background image.
+// ---------------------------------------------------------------------
+.o_web_client.o_home_menu_background:not(.o_home_menu_background_custom) {
+    --homeMenu-bg-color: var(--ob-bg);
+    --homeMenu-bg-image: var(--ob-home-image);
+    background-color: var(--ob-bg);
+    background-image: var(--ob-home-image);
+
+    // Enterprise makes the navbar transparent here; keep the night slab so
+    // the white systray icons stay visible on the light canvas.
+    &:not(.o_in_studio) .o_main_navbar {
+        background:
+            linear-gradient(90deg, transparent 0%, rgba(167, 139, 250, 0.55) 50%, transparent 100%) bottom / 100% 1px no-repeat,
+            var(--ob-night-gradient);
+    }
+
+    .o_home_menu .o_app .o_caption {
+        color: var(--ob-heading);
+        font-weight: 700;
+        letter-spacing: 0;
+        text-shadow: var(--ob-home-caption-shadow);
+    }
+}
+
+.o_web_client .o_home_menu {
+    .o_apps {
+        row-gap: 0.75rem;
+    }
+
+    .o_app {
+        --AppSwitcherIcon-box-shadow: var(--ob-app-shadow);
+        --AppSwitcherIcon-transition: box-shadow 0.3s var(--ob-snap), transform 0.3s var(--ob-snap);
+        border-radius: var(--ob-r);
+
+        .o_app_icon {
+            border-radius: 20px;
+        }
+
+        &:hover {
+            --AppSwitcherIcon-box-shadow: var(--ob-app-shadow-hover);
+            --AppSwitcherIcon-transform: translateY(-4px);
+        }
+
+        &.o_focused {
+            background: var(--ob-accent-soft);
+            outline: 2px solid var(--ob-accent);
+            border-radius: var(--ob-r);
+        }
     }
 }
 

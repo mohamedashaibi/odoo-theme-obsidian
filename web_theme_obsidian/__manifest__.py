@@ -1,7 +1,7 @@
 {
     "name": "Obsidian Backend Theme",
     "summary": "Night-indigo navbar, violet gradient accent, Tajawal typography, dark mode toggle",
-    "version": "19.0.1.2.0",
+    "version": "19.0.1.3.0",
     "category": "Themes/Backend",
     "license": "LGPL-3",
     "depends": ["web"],
