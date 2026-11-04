@@ -2,29 +2,30 @@
 // after backend.scss, so these tokens replace the light ones.
 
 :root {
-    --ob-ink: #07090f;
-    --ob-accent: #8b74ff;
+    --ob-accent: #8f7bff;
+    --ob-accent-2: #b07bff;
     --ob-accent-hover: #a594ff;
-    --ob-accent-soft: rgba(139, 116, 255, 0.18);
-    --ob-accent-tint: rgba(139, 116, 255, 0.07);
-    --ob-accent-ring: rgba(139, 116, 255, 0.35);
-    --ob-on-accent: #ffffff;
+    --ob-accent-ink: #b3a6ff;
+    --ob-accent-soft: rgba(143, 123, 255, 0.18);
+    --ob-accent-tint: rgba(143, 123, 255, 0.07);
+    --ob-accent-ring: rgba(143, 123, 255, 0.35);
 
-    --ob-bg: #0e1120;
-    --ob-surface: #151a2d;
-    --ob-surface-2: #12172a;
-    --ob-heading: #f4f5fb;
-    --ob-text: #d9dcea;
-    --ob-muted: #9aa1bd;
-    --ob-line: #232a42;
-    --ob-line-strong: #2f3756;
-    --ob-line-hover: #434c70;
+    --ob-night: #08071a;
+    --ob-night-gradient: linear-gradient(100deg, #07061a 0%, #0f0b2e 55%, #1c0f48 100%);
 
-    --ob-shadow-pop: 0 18px 48px -12px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(255, 255, 255, 0.04);
-    --ob-shadow-lift: 0 14px 30px -12px rgba(0, 0, 0, 0.7);
-    --ob-shadow-sheet: 0 24px 48px -28px rgba(0, 0, 0, 0.6);
-}
+    --ob-bg: #0c0b1d;
+    --ob-glow: radial-gradient(1100px 420px at 85% -160px, rgba(139, 61, 255, 0.16), transparent 70%);
+    --ob-surface: #14132b;
+    --ob-surface-2: #110f26;
+    --ob-heading: #f3f1ff;
+    --ob-text: #d8d5ef;
+    --ob-muted: #9d99bf;
+    --ob-line: #24223f;
+    --ob-line-strong: #322f55;
+    --ob-line-hover: #47436f;
 
-.o_web_client ::selection {
-    color: var(--ob-heading);
+    --ob-shadow-pop: 0 24px 56px -16px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    --ob-shadow-lift: 0 18px 36px -14px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(143, 123, 255, 0.15);
+    --ob-shadow-sheet: 0 30px 60px -32px rgba(0, 0, 0, 0.7);
+    --ob-shadow-btn: 0 8px 22px -8px rgba(139, 61, 255, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.15);
 }

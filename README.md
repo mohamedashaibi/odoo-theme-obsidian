@@ -1,10 +1,10 @@
 # Obsidian — Odoo 19 Backend Theme
 
-A modern skin for the Odoo 19 backend: ink navbar, a single electric-violet accent, editorial typography (Bricolage Grotesque + Plus Jakarta Sans), floating form sheets, lifting kanban cards, and a dark login screen.
+A modern skin for the Odoo 19 backend: night-indigo aurora navbar, an indigo→violet gradient accent, Tajawal typography (Arabic + Latin), roomy spacing, floating form sheets and list cards, lifting kanban cards, and a glowing dark login screen.
 
 - Built on Odoo 19's own SCSS variables (navbar, buttons, fonts, statusbar) — minimal overrides
 - Dark colour scheme support (`web.assets_web_dark`)
-- Arabic / RTL friendly (IBM Plex Sans Arabic, no letter-spacing on cursive scripts)
+- Arabic / RTL friendly: Tajawal for both scripts, no letter-spacing on cursive text
 - Visible keyboard focus, respects `prefers-reduced-motion`
 
 ## Install
@@ -18,6 +18,7 @@ Fonts load from Google Fonts; offline servers fall back to system fonts.
 ## Customize
 
 Brand colour, navbar and fonts: `web_theme_obsidian/static/src/scss/primary_variables.scss`.
-Shapes, spacing and motion tokens: top of `backend.scss` (`--ob-*` variables).
+Spacing, radii and font size: same file (`$o-horizontal-padding`, `$o-border-radius*`, `$o-font-size-base`).
+Colours, shadows and motion tokens: top of `backend.scss` (`--ob-*` variables); dark palette in `backend.dark.scss`.
 
 License: LGPL-3

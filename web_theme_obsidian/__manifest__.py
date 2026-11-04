@@ -1,7 +1,7 @@
 {
     "name": "Obsidian Backend Theme",
-    "summary": "Ink navbar, violet accent, editorial typography for the Odoo backend",
-    "version": "19.0.1.0.0",
+    "summary": "Night-indigo navbar, violet gradient accent, Tajawal typography, roomy layout",
+    "version": "19.0.1.1.0",
     "category": "Themes/Backend",
     "license": "LGPL-3",
     "depends": ["web"],

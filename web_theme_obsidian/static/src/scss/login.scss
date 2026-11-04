@@ -1,9 +1,10 @@
 // Obsidian — login / reset-password / signup screens.
 // Scoped with :has() so portal and website pages are untouched.
 
-$ob-ink: #0b0e1a;
-$ob-accent: #6246ea;
-$ob-accent-hover: #4f35d2;
+$ob-night: #0d0b26;
+$ob-accent: #5b3df5;
+$ob-accent-2: #8b3dff;
+$ob-heading: #16123a;
 $ob-snap: cubic-bezier(0.16, 1, 0.3, 1);
 $ob-enter: cubic-bezier(0.22, 1, 0.36, 1);
 
@@ -11,11 +12,13 @@ body:has(.oe_login_form),
 body:has(.oe_reset_password_form),
 body:has(.oe_signup_form) {
     min-height: 100vh;
-    font-family: "Plus Jakarta Sans", "IBM Plex Sans Arabic", -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-family: "Tajawal", -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px;
     background:
-        radial-gradient(900px 600px at 85% -10%, rgba(98, 70, 234, 0.55), transparent 60%),
-        radial-gradient(700px 500px at -10% 110%, rgba(47, 128, 237, 0.35), transparent 60%),
-        $ob-ink !important;
+        radial-gradient(800px 560px at 88% -8%, rgba(139, 61, 255, 0.55), transparent 62%),
+        radial-gradient(720px 520px at -8% 108%, rgba(59, 130, 246, 0.38), transparent 62%),
+        radial-gradient(520px 380px at 50% 50%, rgba(91, 61, 245, 0.18), transparent 70%),
+        $ob-night !important;
 
     main,
     #wrapwrap {
@@ -24,47 +27,60 @@ body:has(.oe_signup_form) {
 
     .card:has(form),
     .o_database_list {
-        max-width: 380px !important;
-        border: 1px solid rgba(255, 255, 255, 0.12) !important;
-        border-radius: 22px;
-        background: rgba(255, 255, 255, 0.96) !important;
-        box-shadow: 0 40px 80px -24px rgba(0, 0, 0, 0.6);
-        padding: 12px 8px;
-        animation: ob-login-in 0.6s $ob-enter both;
+        max-width: 400px !important;
+        border: 1px solid rgba(255, 255, 255, 0.14) !important;
+        border-radius: 26px;
+        background: rgba(255, 255, 255, 0.97) !important;
+        box-shadow: 0 50px 100px -30px rgba(0, 0, 0, 0.65), 0 0 0 6px rgba(255, 255, 255, 0.04);
+        padding: 2rem 1.5rem 1.25rem;
+        animation: ob-login-in 0.7s $ob-enter both;
+    }
+
+    .mb-3,
+    .field-login,
+    .field-password {
+        margin-bottom: 1.25rem !important;
     }
 
     label {
-        font-weight: 600;
-        font-size: 0.8125rem;
-        color: #1a1f36;
+        font-weight: 700;
+        font-size: 0.875rem;
+        color: $ob-heading;
+        margin-bottom: 0.4rem;
     }
 
     .form-control {
-        border-radius: 10px;
-        border-color: #d5d9e6;
-        padding: 0.65rem 0.85rem;
-        transition: border-color 0.18s $ob-snap, box-shadow 0.18s $ob-snap;
+        border-radius: 12px;
+        border-color: #dcd8ee;
+        padding: 0.8rem 1rem;
+        font-size: 1rem;
+        transition: border-color 0.2s $ob-snap, box-shadow 0.2s $ob-snap;
 
         &:focus {
             border-color: $ob-accent;
-            box-shadow: 0 0 0 4px rgba(98, 70, 234, 0.25);
+            box-shadow: 0 0 0 4px rgba(91, 61, 245, 0.22);
         }
     }
 
     .btn-primary {
-        background: $ob-accent;
-        border-color: $ob-accent;
-        border-radius: 10px;
-        padding: 0.7rem 1rem;
+        background: linear-gradient(135deg, $ob-accent 0%, $ob-accent-2 100%);
+        border: 0;
+        border-radius: 12px;
+        padding: 0.85rem 1rem;
         font-weight: 800;
-        letter-spacing: 0.01em;
-        box-shadow: 0 10px 24px -10px rgba(98, 70, 234, 0.8);
-        transition: background-color 0.18s $ob-snap, transform 0.18s $ob-snap;
+        font-size: 1rem;
+        box-shadow: 0 14px 30px -12px rgba(91, 61, 245, 0.85), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+        transition: box-shadow 0.2s $ob-snap, transform 0.2s $ob-snap, filter 0.2s $ob-snap;
 
         &:hover,
         &:focus {
-            background: $ob-accent-hover;
-            border-color: $ob-accent-hover;
+            filter: brightness(0.92);
+            box-shadow: 0 18px 36px -12px rgba(91, 61, 245, 0.95), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+        }
+
+        &:focus-visible {
+            outline: 2px solid $ob-accent;
+            outline-offset: 3px;
         }
 
         &:active {
@@ -73,13 +89,13 @@ body:has(.oe_signup_form) {
     }
 
     a {
-        color: $ob-accent;
-        font-weight: 600;
+        color: #4326d9;
+        font-weight: 700;
     }
 }
 
 @keyframes ob-login-in {
-    from { opacity: 0; transform: translateY(14px); }
+    from { opacity: 0; transform: translateY(16px) scale(0.985); }
     to   { opacity: 1; transform: none; }
 }
 
